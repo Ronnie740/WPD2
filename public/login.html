@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body></body>
+</html>
+<section class="text-gray-600 body-font">
+	<header class="text-gray-600 body-font">
+		<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+			<a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+				<img src="./images/logo(1).jpg" alt="logo" class="w-20 h-15" />
+			</a>
+			<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
+				<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2">About Us</a>
+			</nav>
+
+			<button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mx-5">
+				Sign Up
+				<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+					<path d="M5 12h14M12 5l7 7-7 7"></path>
+				</svg>
+			</button>
+		</div>
+	</header>
+	<div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+		<div class="lg:w-auto md:w-auto bg-gray-100 rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0">
+			<h2 class="text-gray-900 text-lg font-medium title-font mb-5">Login</h2>
+			<div class="relative mb-4">
+				<label for="full-name" class="leading-7 text-sm text-gray-600">Full Name</label>
+				<input
+					type="text"
+					id="full-name"
+					name="full-name"
+					class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+				/>
+			</div>
+			<div class="relative mb-4">
+				<label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+				/>
+			</div>
+			<div class="relative mb-4">
+				<label for="password" class="leading-7 text-sm text-gray-600">Password</label>
+				<input
+					type="text"
+					id="password"
+					name="password"
+					class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+				/>
+			</div>
+			<button class="text-white bg-[#2cccc4] border-0 py-2 px-8 focus:outline-none hover:bg-[#3b9394] rounded text-lg">Submit</button>
+			<p class="text-xs text-gray-500 mt-3">If you don't have an account please create one in the sign up page.</p>
+		</div>
+	</div>
+</section>
