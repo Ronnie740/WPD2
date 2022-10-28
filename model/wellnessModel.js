@@ -12,13 +12,14 @@ class Staff {
 			this.db = new nedb();
 		}
 	}
-	// init() {
-	// 	this.db.insert({
-	// 		subject: 'I liked the exhibition',
-	// 		contents: 'amazing',
-	// 		published: '2022-02-16',
-	// 		author: 'Ronnie',
-	// 	});
+	init() {
+		this.db.insert({
+			subject: 'I liked the exhibition',
+			contents: 'amazing',
+			published: '2022-02-16',
+			author: 'Ronnie',
+		});
+	}
 	// 	this.db.insert({
 	// 		subject: 'I liked the exhibition',
 	// 		contents: 'Horrible',

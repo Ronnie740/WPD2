@@ -4,11 +4,13 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/wellnessController');
 
+//const bodyParser = require('body-parser');
+
 // router.get('/', function (req, res) {
 // 	res.send('Hello! Welcome to the guestbook application.');
 // });
 router.get('/', controller.landing_page);
-router.get('/login', controller.login_page);
+router.post('/login', controller.login_page);
 // router.get('/guestbook', function (req, res) {
 // 	res.send('<h1>Guestbook Messages</h1>');
 // });
@@ -29,6 +31,10 @@ router.get('/fitness', controller.fitness_page);
 router.get('/nutrition', controller.nutrition_page);
 // router.get('/"Mental Health"', controller.mentalHealth_page);
 
+//process the routes for the new login
+router.post('/staff_login', controller.staff_login);
+
+router.get('/about-bg', controller.about_bg);
 router.use(function (req, res) {
 	res.status(404);
 	res.type('text/plain');
