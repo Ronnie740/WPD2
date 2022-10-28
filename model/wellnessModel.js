@@ -12,29 +12,15 @@ class Staff {
 			this.db = new nedb();
 		}
 	}
-	init() {
-		this.db.insert({
-			subject: 'I liked the exhibition',
-			contents: 'amazing',
-			published: '2022-02-16',
-			author: 'Ronnie',
-		});
+	// this function allows for new users to be created in the database and works together with the controller
+	// to take in the values the user inputted in the form and call this function from the controller to insert the new staff members
+	newStaff(name, email, password) {
+		if (name && email && password) {
+			this.db.insert({ fname: name, email: email, password: password });
+		} else {
+			console.log('Please fill in all fields');
+		}
 	}
-	// 	this.db.insert({
-	// 		subject: 'I liked the exhibition',
-	// 		contents: 'Horrible',
-	// 		published: '2020-02-18',
-	// 		author: 'Ronnie',
-	// 	});
-	// 	console.log('db entry Ronnie inserted');
-	// 	this.db.insert({
-	// 		subject: 'I liked the exhibition',
-	// 		contents: 'amazing',
-	// 		published: '2022-02-16',
-	// 		author: 'Ann',
-	// 	});
-	// 	console.log('db entry Ann inserted');
-	// }
 	getAllEntries() {
 		return new Promise((resolve, reject) => {
 			this.db.find({}, function (err, entries) {

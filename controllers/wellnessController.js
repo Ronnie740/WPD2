@@ -54,16 +54,21 @@ exports.login_bg = function (req, res) {
 };
 exports.staff_login = function (req, res) {
 	//console.log(req.body);
-	db.insert({ fname: req.body.fname, email: req.body.email, password: req.body.password }, function (err, doc) {
-		if (err) {
-			console.log(err);
-		} else {
-			// res.render('guestbook', { entry: doc });
-			console.log('success');
-			console.log(JSON.stringify(doc));
-			db.getAllEntries();
-		}
-	});
+	// this.db.insert({ fname: req.body.fname, email: req.body.email, password: req.body.password }, function (err, doc) {
+	// 	if (err) {
+	// 		console.log(err);
+	// 	} else {
+	// 		// res.render('guestbook', { entry: doc });
+	// 		console.log('success');
+	// 		console.log(JSON.stringify(doc));
+	// 		db.getAllEntries();
+	// 	}
+	// });
+	//insert new staff members
+
+	db.newStaff(req.body.fname, req.body.email, req.body.password);
+	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password}`);
+	res.send(`Thank you for logging in: Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password}`);
 };
 
 // exports.about_page = function (req, res) {
