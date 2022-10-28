@@ -1,3 +1,5 @@
+/** @format */
+
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/wellnessController');
@@ -11,6 +13,13 @@ router.get('/login', controller.login_page);
 // 	res.send('<h1>Guestbook Messages</h1>');
 // });
 
+//provide route to specific images and files used in the system
+router.get('/logo', controller.logo_img);
+
+//provide route to specific styles used in the system
+// router.get('/styles', controller.styles);
+
+router.get('/login-bg', controller.login_bg);
 router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {
 // 	res.redirect('/about.html');

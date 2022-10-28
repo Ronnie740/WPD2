@@ -1,8 +1,16 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * @format
+ * @type {import('tailwindcss').Config}
+ */
+
 module.exports = {
-  content: [],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+	content: ['../*.{html,js}', '/*.js', '/views/*.moustache'],
+	theme: {
+		extend: {
+			backgroundImage: {
+				login: 'url(/images/Mobile-login-Cristina.jpg)',
+			},
+		},
+	},
+	plugins: [],
+};
