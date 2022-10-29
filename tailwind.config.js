@@ -10,6 +10,9 @@ module.exports = {
 			backgroundImage: {
 				login: 'url(/images/Mobile-login-Cristina.jpg)',
 			},
+			colors: {
+				button: '#04fbeb',
+			},
 		},
 	},
 	plugins: [],
