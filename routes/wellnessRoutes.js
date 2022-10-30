@@ -26,6 +26,10 @@ router.get('/login-bg', controller.login_bg);
 router.get('/add-icon', controller.add_icon);
 router.get('/trash-icon', controller.trash);
 router.get('/manager_bg', controller.manager_bg);
+router.get('/managerAdd', controller.managerAdd);
+router.get('/managerRemove', controller.managerRemove);
+router.post('/addStaff', controller.addStaff);
+router.post('/removeStaff', controller.removeStaff);
 router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {
 // 	res.redirect('/about.html');

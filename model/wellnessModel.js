@@ -21,6 +21,21 @@ class Staff {
 			console.log('Please fill in all fields');
 		}
 	}
+	addStaff(name, email, position) {
+		if (name && email && position) {
+			this.db.insert({ fname: name, email: email, Job_Title: position });
+		} else {
+			console.log('Please fill in all fields');
+		}
+	}
+	removeStaff(id) {
+		if (this.db.find({ _id: id })) {
+			this.db.remove({ _id: id });
+			console.log('Employee No. ' + id + ' has been removed');
+		} else {
+			console.log('Employee not found');
+		}
+	}
 	getAllEntries() {
 		return new Promise((resolve, reject) => {
 			this.db.find({}, function (err, entries) {

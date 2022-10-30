@@ -19,7 +19,7 @@
 					<a class="mr-5 hover:text-gray-900 border-b-2 border-black cursor-pointer p-2" href="#">Staff</a>
 				</nav>
 
-				<a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mx-5" href="">
+				<a class="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-5 bg-[#04fbeb] hover:bg-[#29ddd4]" href="/">
 					Log Out
 					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
 						<path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -27,70 +27,48 @@
 				</a>
 			</div>
 		</header>
-        <div class="flex flex-col mx-80">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8 bg-[#000000] rounded-md bg-opacity-[.45]">
-                <div class="overflow-hidden">
-                  <table class="min-w-full text-center">
-                    <h1 class="text-4xl font-bold text-center my-5 text-white">Staff Details</h1>
-                    <thead class="border-b bg-gray-800">
-                      <tr>
-                        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                          Employee ID
-                        </th>
-                        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                          First Name
-                        </th>
-                        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                          Last Name
-                        </th>
-                        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                          Job Title
-                        </th>
-                      </tr>
-                    </thead class="border-b">
-                    <tbody>
-                      <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Lionel
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Messi
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Manager
-                        </td>
-                      </tr class="bg-white border-b">
-                      <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Earling
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Haaland
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Marketing Assistant
-                        </td>
-                      </tr>
-                      <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                        <td  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Larry
-                        </td>
-                        <td  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Madowo 
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Sales Associate
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+		<main class="w-full h-[80vh]">
+			<div class="bg-[url('./manager_bg')] bg-cover bg-center h-full">
+				<div class="flex flex-col mx-80 mt-10">
+					<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+						<div class="py-4 inline-block min-w-full sm:px-6 lg:px-8 bg-[#000000] rounded-md bg-opacity-[.45] backdrop-blur-md">
+							<div class="overflow-hidden">
+								<table class="min-w-full text-center">
+									<h1 class="text-4xl font-bold text-center my-5 text-white">Staff Details</h1>
+									<thead class="border-b bg-gray-800">
+										<tr>
+											<th scope="col" class="text-sm font-medium text-white px-6 py-4">Employee ID</th>
+											<th scope="col" class="text-sm font-medium text-white px-6 py-4">Full Name</th>
+											<th scope="col" class="text-sm font-medium text-white px-6 py-4">Job Title</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {{#employees}}
+										<tr class="bg-white border-b">
+											<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{_id}}</td>
+											<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{fname}}</td>
+											<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{Job_Title}}</td>
+										</tr>
+                                        {{/employees}}
+									</tbody>
+								</table>
+								<div class="flex mt-4">
+									<div class="mx-auto space-x-6 font-bold text-white">
+										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/managerAdd">
+											<img src="./add-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											Add
+										</a>
+										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/managerRemove">
+											<img src="./trash-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											Remove
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>

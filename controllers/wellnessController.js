@@ -13,14 +13,9 @@ const app = express();
 //to having it in the index.js file and redirecting requests to that.
 const path = require('path');
 const public = path.join(__dirname, '../public/');
-const views = path.join(__dirname, '../views');
+const views = path.join(__dirname, '../views/');
 app.use(express.static(public));
 // app.use(express.urlencoded({ extended: false }));
-
-const mustache = require('mustache-express');
-const { abort } = require('process');
-app.engine('mustache', mustache());
-app.set('view engine', 'mustache');
 
 exports.landing_page = function (req, res) {
 	// res.send('<h1>Landing page</h1>');
@@ -37,8 +32,18 @@ exports.signUp_page = function (req, res) {
 };
 exports.manager_page = function (req, res) {
 	//res.send('<h1>Landing page</h1>');
-	res.sendFile(path.join(public, './manager.html'));
-	// res.sendFile(views, '/manager.mustache');
+	// res.sendFile(path.join(public, './manager.html'));
+	db.getAllEntries()
+		.then((list) => {
+			res.render('manager', {
+				employees: list,
+			});
+			console.log('Promise Resolved');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+	// res.render('manager');
 };
 exports.goals_page = function (req, res) {
 	res.send('<h1>Landing page</h1>');
@@ -89,6 +94,26 @@ exports.staff_login = function (req, res) {
 	db.newStaff(req.body.fname, req.body.email, req.body.password);
 	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password}`);
 	res.send(`Thank you for logging in: Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password}`);
+};
+exports.managerAdd = function (req, res) {
+	res.sendFile(path.join(public, '/addStaff.html'));
+};
+exports.managerRemove = function (req, res) {
+	res.sendFile(path.join(public, '/removeStaff.html'));
+};
+exports.addStaff = function (req, res) {
+	db.addStaff(req.body.fname, req.body.email, req.body.position);
+	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
+	res.send(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
+};
+exports.removeStaff = function (req, res) {
+	if (!req.body.id) {
+		res.send(`The employee doesn't exist`);
+	} else {
+		console.log(`Employee No. ${req.body.id}`);
+		db.removeStaff(req.body.id);
+		res.send(`The employee has been removed from the database`);
+	}
 };
 
 // exports.about_page = function (req, res) {
