@@ -6,7 +6,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login Page</title>
+		<title>Update Staff</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<!-- <link rel="stylesheet" href="/styles" /> -->
 	</head>
@@ -32,11 +32,10 @@
 		</header>
 		<main class="text-gray-600 body-font w-full h-[86vh]">
 			<section class="bg-[url('/login-bg')] bg-cover bg-center min-h-fit h-full w-full">
-				<form action="/removeStaff" method="post">
+				<form action="/updateStaff" method="post">
 					<div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
 						<div class="lg:w-auto md:w-auto bg-[#0D0D0D] bg-opacity-[.45] backdrop-blur-sm rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0 text-white">
-							<h2 class="text-lg font-medium title-font mb-5 text-[40px]">Remove Staff</h2>
-
+							<h2 class="text-lg font-medium title-font mb-5 text-[40px]">Update Staff</h2>
 							<div class="relative mb-4">
 								<label for="id" class="leading-7 text-sm">Employee ID</label>
 								<input
@@ -48,8 +47,29 @@
 									required
 								/>
 							</div>
+							<div class="relative mb-4">
+								<label for="name" class="leading-7 text-sm">Name</label>
+								<input
+									type="text"
+									id="name"
+									name="name"
+									placeholder="Email Address"
+									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									required
+								/>
+							</div>
+							<div class="relative mb-4">
+								<label for="position" class="leading-7 text-sm">Job Title</label>
+								<input
+									type="text"
+									id="position"
+									name="position"
+									placeholder="Job Title"
+									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									required
+								/>
+							</div>
 							<button class="text-white bg-[#2cccc4] border-0 py-2 px-8 focus:outline-none hover:bg-[#3b9394] rounded text-lg" type="submit">Submit</button>
-							<p class="text-xs text-gray-300 mt-3">If you don't have an account please create one in the sign up page.</p>
 						</div>
 					</div>
 				</form>

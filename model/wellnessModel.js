@@ -14,13 +14,14 @@ class Staff {
 	}
 	// this function allows for new users to be created in the database and works together with the controller
 	// to take in the values the user inputted in the form and call this function from the controller to insert the new staff members
-	newStaff(name, email, password) {
-		if (name && email && password) {
-			this.db.insert({ fname: name, email: email, password: password });
+	newStaff(name, email, password, position) {
+		if (name && email && password && position) {
+			this.db.insert({ fname: name, email: email, password: password, Job_Title: position });
 		} else {
 			console.log('Please fill in all fields');
 		}
 	}
+	//manager add Staff
 	addStaff(name, email, position) {
 		if (name && email && position) {
 			this.db.insert({ fname: name, email: email, Job_Title: position });
@@ -28,10 +29,20 @@ class Staff {
 			console.log('Please fill in all fields');
 		}
 	}
+	//manager remove staff
 	removeStaff(id) {
 		if (this.db.find({ _id: id })) {
 			this.db.remove({ _id: id });
 			console.log('Employee No. ' + id + ' has been removed');
+		} else {
+			console.log('Employee not found');
+		}
+	}
+	//manager update staff
+	updateStaff(id, name, position) {
+		if (this.db.find({ _id: id })) {
+			this.db.update({ _id: id }, { $set: { fname: name, Job_Title: position } });
+			console.log('The document', id, 'has been updated to. Name:', name, ' Position:', position);
 		} else {
 			console.log('Employee not found');
 		}

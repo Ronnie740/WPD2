@@ -10,7 +10,7 @@ const controller = require('../controllers/wellnessController');
 // 	res.send('Hello! Welcome to the guestbook application.');
 // });
 router.get('/', controller.landing_page);
-router.post('/login', controller.login_page);
+router.get('/login', controller.login_page);
 // router.get('/guestbook', function (req, res) {
 // 	res.send('<h1>Guestbook Messages</h1>');
 // });
@@ -23,13 +23,18 @@ router.get('/logo', controller.logo_img);
 // router.get('/styles', controller.styles);
 
 router.get('/login-bg', controller.login_bg);
+
 router.get('/add-icon', controller.add_icon);
+router.get('/update-icon', controller.update_icon);
 router.get('/trash-icon', controller.trash);
+
 router.get('/manager_bg', controller.manager_bg);
 router.get('/managerAdd', controller.managerAdd);
 router.get('/managerRemove', controller.managerRemove);
 router.post('/addStaff', controller.addStaff);
+router.post('/updateStaff', controller.updateStaff);
 router.post('/removeStaff', controller.removeStaff);
+router.get('/managerUpdate', controller.managerUpdate);
 router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {
 // 	res.redirect('/about.html');
@@ -40,9 +45,12 @@ router.get('/nutrition', controller.nutrition_page);
 // router.get('/"Mental Health"', controller.mentalHealth_page);
 
 //process the routes for the new login
-router.post('/staff_login', controller.staff_login);
+router.post('/staff_signup', controller.staff_signup);
+
+router.get('/dashboard', controller.dashboard);
 
 router.get('/about-bg', controller.about_bg);
+//error handling
 router.use(function (req, res) {
 	res.status(404);
 	res.type('text/plain');

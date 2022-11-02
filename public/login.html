@@ -20,7 +20,7 @@
 					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/">About Us</a>
 				</nav>
 
-				<a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mx-5" href="/signup">
+				<a class="inline-flex items-center bg-[#04fbeb] border-0 py-1 px-3 focus:outline-none hover:bg-[#29ddd4] rounded text-base mt-4 md:mt-0 mx-5" href="/signup">
 					Sign Up
 					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
 						<path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -28,12 +28,12 @@
 				</a>
 			</div>
 		</header>
-		<main class="text-gray-600 body-font bg-[url('/login-bg')] bg-cover bg-right bg-no-repeat w-full min-h-fit">
+		<main class="text-gray-600 body-font bg-[url('/login-bg')] bg-cover md:bg-right bg-no-repeat md:w-full md:h-[90vh] h-full w-screen bg-center">
 			<form action="/staff_login" method="post">
 				<div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
 					<div class="lg:w-auto md:w-auto bg-[#0D0D0D] bg-opacity-[.45] backdrop-blur-sm rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0 text-white">
-						<h2 class="text-lg font-medium title-font mb-5 text-[40px]">Login</h2>
-						<div class="relative mb-4">
+						<h2 class="text-lg font-medium title-font mb-5 text-[40px] text-center">Login</h2>
+						<!-- <div class="relative mb-4">
 							<label for="fname" class="leading-7 text-sm">Full Name</label>
 							<input
 								type="text"
@@ -43,7 +43,7 @@
 								class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 								required
 							/>
-						</div>
+						</div> -->
 						<div class="relative mb-4">
 							<label for="email" class="leading-7 text-sm">Email</label>
 							<input
@@ -67,7 +67,9 @@
 							/>
 						</div>
 						<button class="text-white bg-[#2cccc4] border-0 py-2 px-8 focus:outline-none hover:bg-[#3b9394] rounded text-lg" type="submit">Submit</button>
-						<p class="text-xs text-gray-300 mt-3">If you don't have an account please create one in the sign up page.</p>
+						<p class="text-xs text-gray-300 mt-3">
+							If you don't have an account please create one in the sign up page <a class="underline text-blue-500 hover:text-blue-300" href="/signup">here</a>.
+						</p>
 					</div>
 				</div>
 			</form>
