@@ -59,6 +59,31 @@ class Staff {
 			});
 		});
 	}
+	loginValidation(email, password) {
+		// this.db.find({ email: email, password: password }, function (err, docs) {
+		// 	if (err) {
+		// 		console.log('This employee does not exist');
+		// 	} else {
+		// 		console.log('Employee found');
+		// 		console.log(docs);
+		// 	}
+		// });
+		// if (this.db.find({ email: email, password: password })) {
+		// 	console.log('employee exists');
+		// } else {
+		// 	console.log(`employee doesn't exist`);
+		// }
+		return new Promise((resolve, reject) => {
+			this.db.find({ email: email, password: password }).exec(function (err, entries) {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(entries);
+					console.log('loginValidation() returns', entries);
+				}
+			});
+		});
+	}
 	// getRonnieEntries() {
 	// 	return new Promise((resolve, reject) => {
 	// 		this.db

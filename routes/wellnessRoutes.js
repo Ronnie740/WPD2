@@ -10,6 +10,7 @@ const controller = require('../controllers/wellnessController');
 // 	res.send('Hello! Welcome to the guestbook application.');
 // });
 router.get('/', controller.landing_page);
+router.get('/about', controller.about);
 router.get('/login', controller.login_page);
 // router.get('/guestbook', function (req, res) {
 // 	res.send('<h1>Guestbook Messages</h1>');
@@ -46,7 +47,7 @@ router.get('/nutrition', controller.nutrition_page);
 
 //process the routes for the new login
 router.post('/staff_signup', controller.staff_signup);
-
+router.post('/staff_login', controller.loginValidation);
 router.get('/dashboard', controller.dashboard);
 
 router.get('/about-bg', controller.about_bg);

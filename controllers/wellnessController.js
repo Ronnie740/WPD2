@@ -87,18 +87,11 @@ exports.dashboard = function (req, res) {
 
 exports.staff_signup = function (req, res) {
 	db.newStaff(req.body.fname, req.body.email, req.body.password, req.body.position);
-	//console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password}, Job_Title: ${req.body.position}`);
-	//res.send(`Thank you for Signing Up: Full Name: ${req.body.fname}, Email: ${req.body.email}, Password: ${req.body.password},  Job_Title: ${req.body.position}`);
-	db.getAllEntries()
-		.then((list) => {
-			res.render('manager', {
-				employees: list,
-			});
-			console.log('Promise Resolved');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	res.redirect('/manager');
+};
+exports.loginValidation = function (req, res) {
+	db.loginValidation(req.body.email, req.body.password);
+	res.redirect('/manager');
 };
 exports.managerAdd = function (req, res) {
 	res.sendFile(path.join(public, '/addStaff.html'));
@@ -113,16 +106,7 @@ exports.addStaff = function (req, res) {
 	db.addStaff(req.body.fname, req.body.email, req.body.position);
 	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
 	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
-	db.getAllEntries()
-		.then((list) => {
-			res.render('manager', {
-				employees: list,
-			});
-			console.log('Promise Resolved');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	res.redirect('/manager');
 };
 exports.removeStaff = function (req, res) {
 	if (!req.body.id) {
@@ -132,16 +116,7 @@ exports.removeStaff = function (req, res) {
 		db.removeStaff(req.body.id);
 		console.log(`The employee has been removed from the database`);
 	}
-	db.getAllEntries()
-		.then((list) => {
-			res.render('manager', {
-				employees: list,
-			});
-			console.log('Promise Resolved');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	res.redirect('/manager');
 };
 exports.updateStaff = function (req, res) {
 	if (!req.body.id) {
@@ -152,16 +127,12 @@ exports.updateStaff = function (req, res) {
 		console.log(`The employee has been updated`);
 		//res.sendFile(path.join(views, './manager.mustache'.to_html()));
 	}
-	db.getAllEntries()
-		.then((list) => {
-			res.render('manager', {
-				employees: list,
-			});
-			console.log('Promise Resolved');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	res.redirect('/manager');
+};
+
+exports.about = function (req, res) {
+	// res.send('<h1>Landing page</h1>');
+	res.sendFile(path.join(public, '/userAboutUs.html'));
 };
 
 // exports.about_page = function (req, res) {
