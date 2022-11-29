@@ -40,6 +40,15 @@ class Staff {
 			console.log('Employee not found');
 		}
 	}
+	// remove goal
+	removeGoal(id) {
+		if (this.db.find({ _id: id })) {
+			this.db.remove({ _id: id });
+			console.log('Goal ' + id + ' has been removed');
+		} else {
+			console.log('Goal not found');
+		}
+	}
 	//manager update staff
 	updateStaff(id, name, position) {
 		if (this.db.find({ _id: id })) {

@@ -37,6 +37,8 @@ router.get('/addGoal', controller.addGoal);
 router.post('/add_Goal', controller.add_Goal);
 router.post('/updateStaff', controller.updateStaff);
 router.post('/removeStaff', controller.removeStaff);
+router.get('/removeGoal', controller.removeGoal);
+router.post('/remove_Goal', controller.remove_Goal);
 router.get('/managerUpdate', controller.managerUpdate);
 router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {

@@ -145,6 +145,9 @@ exports.managerUpdate = function (req, res) {
 exports.addGoal = function (req, res) {
 	res.sendFile(path.join(public, './addGoal.html'));
 };
+exports.removeGoal = function (req, res) {
+	res.sendFile(path.join(public, './removeGoal.html'));
+};
 
 exports.addStaff = function (req, res) {
 	db.addStaff(req.body.fname, req.body.email, req.body.position);
@@ -157,6 +160,19 @@ exports.add_Goal = function (req, res) {
 	console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
 	res.redirect('/fitness_goals');
 };
+
+exports.remove_Goal = function (req, res) {
+	if (!req.body.id) {
+		console.log(`This goal doesn't exist`);
+		res.redirect('/fitness_goals');
+	} else {
+		console.log(`Goal No. ${req.body.id}`);
+		goals.removeGoal(req.body.id);
+		console.log(`The Goal has been removed from the database`);
+	}
+	res.redirect('/fitness_goals');
+};
+
 exports.removeStaff = function (req, res) {
 	if (!req.body.id) {
 		res.send(`The employee doesn't exist`);
