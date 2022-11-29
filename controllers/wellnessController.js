@@ -94,7 +94,7 @@ exports.mental_health_goals = function (req, res) {
 exports.nutrition_goals = function (req, res) {
 	// res.send('<h1>Landing page</h1>');
 	// res.sendFile(path.join(__dirname, './public/index.html'));
-	nutrition
+	nutrition_goals
 		.getAllEntries()
 		.then((list) => {
 			res.render('nutrition', {
