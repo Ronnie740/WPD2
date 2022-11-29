@@ -49,6 +49,15 @@ class Staff {
 			console.log('Goal not found');
 		}
 	}
+	// update goal
+	updateGoal(id, goal, start, end) {
+		if (this.db.find({ _id: id })) {
+			this.db.update({ _id: id }, { $set: { goal: goal, start: start, end: end } });
+			console.log('The Goal with ID:', id, ' has been updated to. Goal:', goal, ' From:', start, ' To:', end);
+		} else {
+			console.log('Goal not found');
+		}
+	}
 	//manager update staff
 	updateStaff(id, name, position) {
 		if (this.db.find({ _id: id })) {

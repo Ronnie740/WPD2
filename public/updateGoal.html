@@ -6,7 +6,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Add Goal</title>
+		<title>Update Goal</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://unpkg.com/flowbite@1.5.4/dist/datepicker.js"></script>
 		<!-- <link rel="stylesheet" href="/styles" /> -->
@@ -33,12 +33,23 @@
 		</header>
 		<main class="text-gray-600 body-font w-full h-[86vh]">
 			<section class="bg-[url('/login-bg')] bg-cover bg-center min-h-fit h-full w-full">
-				<form action="/add_Goal" method="post">
+				<form action="/update_Goal" method="post">
 					<div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
 						<div class="lg:w-auto md:w-auto bg-[#0D0D0D] bg-opacity-[.45] backdrop-blur-sm rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0 text-white space-y-4">
-							<h2 class="text-lg font-medium title-font mb-5 text-[40px]">New Goal</h2>
+							<h2 class="text-lg font-medium title-font mb-5 text-[40px]">Update Goal</h2>
 							<div class="relative mb-4">
-								<label for="goal" class="leading-7 text-sm">Goal</label>
+								<label for="fname" class="leading-7 text-sm">Goal ID</label>
+								<input
+									type="text"
+									id="id"
+									name="id"
+									placeholder="Goal ID"
+									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									required
+								/>
+							</div>
+							<div class="relative mb-4">
+								<label for="fname" class="leading-7 text-sm">Goal</label>
 								<input
 									type="text"
 									id="goal"
@@ -47,18 +58,6 @@
 									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									required
 								/>
-							</div>
-							<div class="relative mb-4">
-								<label for="category" class="leading-7 text-sm">Category</label>
-								<select
-									id="category"
-									name="category"
-									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-600 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-								>
-									<option value="fitness">Fitness</option>
-									<option value="nutrition">Nutrition</option>
-									<option value="mental_health">Mental Health</option>
-								</select>
 							</div>
 							<div date-rangepicker class="flex items-center">
 								<div class="relative">

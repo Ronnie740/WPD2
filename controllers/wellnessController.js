@@ -4,6 +4,8 @@ const staffDAO = require('../model/wellnessModel');
 const db = new staffDAO('staff.db');
 const goals = new staffDAO('goals.db');
 const fitness_goals = new staffDAO('fitness.db');
+const nutrition_goals = new staffDAO('nutrition.db');
+const mental_health_goals = new staffDAO('mental_health.db');
 console.log('db created');
 //goals.initGoals();
 
@@ -14,6 +16,8 @@ const app = express();
 //the reason for having the path here is that the load times of the static files is much faster as opposed
 //to having it in the index.js file and redirecting requests to that.
 const path = require('path');
+const e = require('express');
+const { features } = require('process');
 const public = path.join(__dirname, '../public/');
 const views = path.join(__dirname, '../views/');
 app.use(express.static(public));
@@ -49,7 +53,18 @@ exports.manager_page = function (req, res) {
 };
 exports.fitness_goals = function (req, res) {
 	//res.sendFile(path.join(public, '/fitness_goals.html'));
-	goals
+	// goals
+	// 	.getAllEntries()
+	// 	.then((list) => {
+	// 		res.render('fitness', {
+	// 			goals: list,
+	// 		});
+	// 		console.log('Promise Resolved');
+	// 	})
+	// 	.catch((err) => {
+	// 		console.log(err);
+	// 	});
+	fitness_goals
 		.getAllEntries()
 		.then((list) => {
 			res.render('fitness', {
@@ -62,12 +77,34 @@ exports.fitness_goals = function (req, res) {
 		});
 };
 exports.mental_health_goals = function (req, res) {
-	res.send('<h1>Landing page</h1>');
+	// res.send('<h1>Landing page</h1>');
 	// res.sendFile(path.join(__dirname, './public/index.html'));
+	mental_health_goals
+		.getAllEntries()
+		.then((list) => {
+			res.render('mental_health', {
+				goals: list,
+			});
+			console.log('Promise Resolved');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 exports.nutrition_goals = function (req, res) {
-	res.send('<h1>Landing page</h1>');
+	// res.send('<h1>Landing page</h1>');
 	// res.sendFile(path.join(__dirname, './public/index.html'));
+	nutrition
+		.getAllEntries()
+		.then((list) => {
+			res.render('nutrition', {
+				goals: list,
+			});
+			console.log('Promise Resolved');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 exports.fitness_page = function (req, res) {
 	res.send('<h1>Landing page</h1>');
@@ -148,6 +185,9 @@ exports.addGoal = function (req, res) {
 exports.removeGoal = function (req, res) {
 	res.sendFile(path.join(public, './removeGoal.html'));
 };
+exports.updateGoal = function (req, res) {
+	res.sendFile(path.join(public, './updateGoal.html'));
+};
 
 exports.addStaff = function (req, res) {
 	db.addStaff(req.body.fname, req.body.email, req.body.position);
@@ -155,22 +195,96 @@ exports.addStaff = function (req, res) {
 	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
 	res.redirect('/manager');
 };
+
+//add goals
 exports.add_Goal = function (req, res) {
-	goals.add_Goal(req.body.goal, req.body.start, req.body.end);
-	console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
-	res.redirect('/fitness_goals');
+	// goals.add_Goal(req.body.goal, req.body.start, req.body.end);
+	// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+	// res.redirect('/fitness_goals');
+	if (req.body.category === 'fitness') {
+		fitness_goals.add_Goal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/fitness_goals');
+	} else if (req.body.category === 'nutrition') {
+		nutrition_goals.add_Goal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/nutrition_goals');
+	} else {
+		mental_health_goals.add_Goal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/mental_health_goals');
+	}
+};
+
+exports.update_Goal = function (req, res) {
+	// goals.updateGoal(req.body.id, req.body.goal, req.body.start, req.body.end);
+	// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+	// res.redirect('/fitness_goals');
+	if (req.body.category === 'fitness') {
+		fitness_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/fitness_goals');
+	} else if (req.body.category === 'nutrition') {
+		nutrition_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/nutrition_goals');
+	} else {
+		mental_health_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		res.redirect('/mental_health_goals');
+	}
 };
 
 exports.remove_Goal = function (req, res) {
-	if (!req.body.id) {
-		console.log(`This goal doesn't exist`);
+	// if (!req.body.id) {
+	// 	console.log(`This goal doesn't exist`);
+	// 	res.redirect('/fitness_goals');
+	// } else {
+	// 	console.log(`Goal No. ${req.body.id}`);
+	// 	goals.removeGoal(req.body.id);
+	// 	console.log(`The Goal has been removed from the database`);
+	// }
+	// res.redirect('/fitness_goals');
+	if (req.body.category === 'fitness') {
+		// fitness_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		// res.redirect('/fitness_goals');
+		if (!req.body.id) {
+			console.log(`This goal doesn't exist`);
+			res.redirect('/fitness_goals');
+		} else {
+			console.log(`Goal No. ${req.body.id}`);
+			fitness_goals.removeGoal(req.body.id);
+			console.log(`The Goal has been removed from the database`);
+		}
 		res.redirect('/fitness_goals');
+	} else if (req.body.category === 'nutrition') {
+		// nutrition_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		// res.redirect('/nutrition_goals');
+		if (!req.body.id) {
+			console.log(`This goal doesn't exist`);
+			res.redirect('/nutritrion_goals');
+		} else {
+			console.log(`Goal No. ${req.body.id}`);
+			nutrition_goals.removeGoal(req.body.id);
+			console.log(`The Goal has been removed from the database`);
+		}
+		res.redirect('/nutrition_goals');
 	} else {
-		console.log(`Goal No. ${req.body.id}`);
-		goals.removeGoal(req.body.id);
-		console.log(`The Goal has been removed from the database`);
+		// mental_health_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+		// res.redirect('/mental_health_goals');
+		if (!req.body.id) {
+			console.log(`This goal doesn't exist`);
+			res.redirect('/mental_health_goals');
+		} else {
+			console.log(`Goal No. ${req.body.id}`);
+			nutrition_goals.removeGoal(req.body.id);
+			console.log(`The Goal has been removed from the database`);
+		}
+		res.redirect('/mental_health_goals');
 	}
-	res.redirect('/fitness_goals');
 };
 
 exports.removeStaff = function (req, res) {
