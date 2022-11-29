@@ -171,9 +171,9 @@
 
 							<!-- goal template -->
                             {{#goals}}
-							<div class="flex space-x-5 bg-white mx-auto p-5 rounded-md font-semibold w-fit">
+							<div class="flex space-x-5 bg-white mx-auto p-5 rounded-md font-semibold w-full justify-center">
 								<!-- Date -->
-								<div class="flex flex-col space-y-2">
+								<div class="flex flex-col space-y-2 w-1/4 justify-center">
 									<div class="flex space-x-2">
 										<!-- format dd-mm-yyyy -->
 										<p class="font-bold">From:</p>
@@ -185,36 +185,30 @@
 									</div>
 								</div>
 								<!-- Goal -->
-								<div class="my-auto"><p>{{goal}}</p></div>
+								<div class="my-auto w-1/4 text-center"><p>{{goal}}</p></div>
 								<!-- ID -->
-								<div class="my-auto">
+								<div class="my-auto w-1/4 text-center">
 									<p>{{_id}}</p>
 								</div>
 								<!-- Completed -->
-								<div class="my-auto"><img src="/checked" alt="check-mark" class="w-10 h-10" /></div>
+								<div class="my-auto w-1/4 mx-auto"><img src="/checked" alt="check-mark" class="w-10 h-10" /></div>
 							</div>
                             {{/goals}}
 							<!-- Buttons -->
 							<div class="flex">
 								<div class="mx-auto space-x-5">
-									<a
-										class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
-										href="/addGoal"
-									>
-										Add
-									</a>
-									<a
-										class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
-										href="/removeGoals"
-									>
-										Remove
-									</a>
-									<a
-										class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
-										href="/updateGoals"
-									>
-										Update
-									</a>
+									<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/addGoal">
+											<img src="./add-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											Add
+										</a>
+										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/removeGoal">
+											<img src="./trash-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											Remove
+										</a>
+										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/updateGoal">
+											<img src="./update-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											Update
+										</a>
 								</div>
 							</div>
 						</div>
