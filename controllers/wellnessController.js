@@ -2,8 +2,10 @@
 
 const staffDAO = require('../model/wellnessModel');
 const db = new staffDAO('staff.db');
-//db.init();
+const goals = new staffDAO('goals.db');
+const fitness_goals = new staffDAO('fitness.db');
 console.log('db created');
+//goals.initGoals();
 
 const express = require('express');
 const app = express();
@@ -45,7 +47,25 @@ exports.manager_page = function (req, res) {
 		});
 	// res.render('manager');
 };
-exports.goals_page = function (req, res) {
+exports.fitness_goals = function (req, res) {
+	//res.sendFile(path.join(public, '/fitness_goals.html'));
+	goals
+		.getAllEntries()
+		.then((list) => {
+			res.render('fitness', {
+				goals: list,
+			});
+			console.log('Promise Resolved');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+exports.mental_health_goals = function (req, res) {
+	res.send('<h1>Landing page</h1>');
+	// res.sendFile(path.join(__dirname, './public/index.html'));
+};
+exports.nutrition_goals = function (req, res) {
 	res.send('<h1>Landing page</h1>');
 	// res.sendFile(path.join(__dirname, './public/index.html'));
 };
@@ -54,6 +74,10 @@ exports.fitness_page = function (req, res) {
 	// res.sendFile(path.join(__dirname, './public/index.html'));
 };
 exports.nutrition_page = function (req, res) {
+	res.send('<h1>Landing page</h1>');
+	// res.sendFile(path.join(__dirname, './public/index.html'));
+};
+exports.mental_health = function (req, res) {
 	res.send('<h1>Landing page</h1>');
 	// res.sendFile(path.join(__dirname, './public/index.html'));
 };
@@ -66,6 +90,12 @@ exports.update_icon = function (req, res) {
 
 exports.about_bg = function (req, res) {
 	res.sendFile(path.join(public, './images/8225.jpg'));
+};
+exports.fitness_bg = function (req, res) {
+	res.sendFile(path.join(public, './images/mental_healthBg.jpg'));
+};
+exports.checked = function (req, res) {
+	res.sendFile(path.join(public, './images/check-mark.png'));
 };
 exports.add_icon = function (req, res) {
 	res.sendFile(path.join(public, './images/add.png'));
@@ -80,9 +110,18 @@ exports.manager_bg = function (req, res) {
 exports.login_bg = function (req, res) {
 	res.sendFile(path.join(public, './images/Mobile-login-Cristina.jpg'));
 };
+exports.fitness_1 = function (req, res) {
+	res.sendFile(path.join(public, '/images/fitness.jpg'));
+};
+exports.nutrition_1 = function (req, res) {
+	res.sendFile(path.join(public, '/images/nutrition.jpg'));
+};
+exports.mental_health_1 = function (req, res) {
+	res.sendFile(path.join(public, '/images/mentalHealth.jpg'));
+};
 
-exports.dashboard = function (req, res) {
-	res.sendFile('I am not a file');
+exports.wellness = function (req, res) {
+	res.sendFile(path.join(public, './wellness.html'));
 };
 
 exports.staff_signup = function (req, res) {
@@ -102,11 +141,21 @@ exports.managerRemove = function (req, res) {
 exports.managerUpdate = function (req, res) {
 	res.sendFile(path.join(public, './updateStaff.html'));
 };
+
+exports.addGoal = function (req, res) {
+	res.sendFile(path.join(public, './addGoal.html'));
+};
+
 exports.addStaff = function (req, res) {
 	db.addStaff(req.body.fname, req.body.email, req.body.position);
 	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
 	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
 	res.redirect('/manager');
+};
+exports.add_Goal = function (req, res) {
+	goals.add_Goal(req.body.goal, req.body.start, req.body.end);
+	console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
+	res.redirect('/fitness_goals');
 };
 exports.removeStaff = function (req, res) {
 	if (!req.body.id) {

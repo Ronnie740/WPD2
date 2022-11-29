@@ -2,6 +2,7 @@
 
 const { response } = require('express');
 const nedb = require('nedb');
+const { isAbsolute } = require('path');
 
 class Staff {
 	constructor(dbFilePath) {
@@ -12,6 +13,7 @@ class Staff {
 			this.db = new nedb();
 		}
 	}
+
 	// this function allows for new users to be created in the database and works together with the controller
 	// to take in the values the user inputted in the form and call this function from the controller to insert the new staff members
 	newStaff(name, email, password, position) {
@@ -84,6 +86,41 @@ class Staff {
 			});
 		});
 	}
+	initGoals() {
+		this.db.insert(
+			[
+				{ startDate: '20-10-2022', endDate: '20-10-2022', goal: 'Drink 3 litres of water a day for a week.' },
+				{ startDate: '20-10-2022', endDate: '30-12-2023', goal: 'Drink 5 litres of water a day for a week.' },
+			],
+			function (err, newDocs) {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log(newDocs);
+					// var newInsert = newDocs.length + 1;
+					// console.log('00%s', newInsert);
+				}
+			}
+		);
+		// var totalCount = this.db.count({}, (err, count) => {
+		// 	if (err) {
+		// 		console.log(err);
+		// 	} else {
+		// 		console.log(count);
+		// 	}
+		// });
+		// console.log(totalCount + 1);
+		console.log('documents inserted');
+	}
+
+	add_Goal(goal, start, end) {
+		if (goal && start && end) {
+			this.db.insert({ goal: goal, start: start, end: end });
+		} else {
+			console.log('Please fill in all fields');
+		}
+	}
+
 	// getRonnieEntries() {
 	// 	return new Promise((resolve, reject) => {
 	// 		this.db

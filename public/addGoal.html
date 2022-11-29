@@ -1,0 +1,97 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Add Goal</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://unpkg.com/flowbite@1.5.4/dist/datepicker.js"></script>
+		<!-- <link rel="stylesheet" href="/styles" /> -->
+	</head>
+	<body>
+		<header class="text-gray-600 body-font">
+			<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+				<a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+					<img src="/logo" alt="AGB_logo" class="w-20 h-15" />
+				</a>
+				<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center font-bold">
+					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/">About Us</a>
+					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/wellness">Wellness</a>
+					<a class="mr-5 hover:text-gray-900 border-b-2 border-black cursor-pointer p-2" href="/manager">Staff</a>
+				</nav>
+
+				<a class="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-5 bg-[#04fbeb] hover:bg-[#29ddd4]" href="/">
+					Log Out
+					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</header>
+		<main class="text-gray-600 body-font w-full h-[86vh]">
+			<section class="bg-[url('/login-bg')] bg-cover bg-center min-h-fit h-full w-full">
+				<form action="/add_Goal" method="post">
+					<div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+						<div class="lg:w-auto md:w-auto bg-[#0D0D0D] bg-opacity-[.45] backdrop-blur-sm rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0 text-white space-y-4">
+							<h2 class="text-lg font-medium title-font mb-5 text-[40px]">New Goal</h2>
+							<div class="relative mb-4">
+								<label for="fname" class="leading-7 text-sm">Goal</label>
+								<input
+									type="text"
+									id="goal"
+									name="goal"
+									placeholder="Goal"
+									class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									required
+								/>
+							</div>
+							<div date-rangepicker class="flex items-center">
+								<div class="relative">
+									<div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+										<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+											<path
+												fill-rule="evenodd"
+												d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+												clip-rule="evenodd"
+											></path>
+										</svg>
+									</div>
+									<input
+										name="start"
+										type="text"
+										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										placeholder="Select date start"
+									/>
+								</div>
+								<span class="mx-4 text-white">to</span>
+								<div class="relative">
+									<div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+										<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+											<path
+												fill-rule="evenodd"
+												d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+												clip-rule="evenodd"
+											></path>
+										</svg>
+									</div>
+									<input
+										name="end"
+										type="text"
+										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										placeholder="Select date end"
+									/>
+								</div>
+							</div>
+
+							<button class="text-white bg-[#2cccc4] border-0 py-2 px-8 focus:outline-none hover:bg-[#3b9394] rounded text-lg" type="submit">Submit</button>
+							<p class="text-xs text-gray-300 mt-3">If you don't have an account please create one in the sign up page.</p>
+						</div>
+					</div>
+				</form>
+			</section>
+		</main>
+	</body>
+</html>

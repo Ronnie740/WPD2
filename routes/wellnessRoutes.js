@@ -33,6 +33,8 @@ router.get('/manager_bg', controller.manager_bg);
 router.get('/managerAdd', controller.managerAdd);
 router.get('/managerRemove', controller.managerRemove);
 router.post('/addStaff', controller.addStaff);
+router.get('/addGoal', controller.addGoal);
+router.post('/add_Goal', controller.add_Goal);
 router.post('/updateStaff', controller.updateStaff);
 router.post('/removeStaff', controller.removeStaff);
 router.get('/managerUpdate', controller.managerUpdate);
@@ -40,17 +42,25 @@ router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {
 // 	res.redirect('/about.html');
 // });
-router.get('/goals', controller.goals_page);
+router.get('/fitness_goals', controller.fitness_goals);
+router.get('/nutrition_goals', controller.nutrition_goals);
+router.get('/mental_health_goals', controller.mental_health_goals);
 router.get('/fitness', controller.fitness_page);
+router.get('/fitness_1', controller.fitness_1);
 router.get('/nutrition', controller.nutrition_page);
+router.get('/nutrition_1', controller.nutrition_1);
+router.get('/mental_health_1', controller.mental_health_1);
+router.get('/mental_health', controller.mental_health);
 // router.get('/"Mental Health"', controller.mentalHealth_page);
 
 //process the routes for the new login
 router.post('/staff_signup', controller.staff_signup);
 router.post('/staff_login', controller.loginValidation);
-router.get('/dashboard', controller.dashboard);
+router.get('/wellness', controller.wellness);
 
 router.get('/about-bg', controller.about_bg);
+router.get('/fitness-bg', controller.fitness_bg);
+router.get('/checked', controller.checked);
 //error handling
 router.use(function (req, res) {
 	res.status(404);

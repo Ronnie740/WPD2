@@ -1,0 +1,109 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Manager View</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+		<header class="text-gray-600 body-font">
+			<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+				<a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+					<img src="/logo" alt="AGB_logo" class="w-20 h-15" />
+				</a>
+				<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center font-bold">
+					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/">About Us</a>
+					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/wellness">Wellness</a>
+					<a class="mr-5 hover:text-gray-900 border-b-2 border-black cursor-pointer p-2" href="#">Staff</a>
+				</nav>
+
+				<a class="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-5 bg-[#04fbeb] hover:bg-[#29ddd4]" href="/">
+					Log Out
+					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</header>
+		<main class="mx-28 space-y-5">
+			<section class="flex flex-col space-y-5">
+				<h1 class="text-4xl font-bold text-center">AGB Wellness <br />Program</h1>
+
+				<p class="text-center">
+					The company is committed to your health and happiness, not just at work but in your personal life too. To help achieve this goal we have setup a program of activities so you can
+					keep healthy and have fun here at work. We may even provide some goodies from time to time to help you out. Please take the time to read through the wellness plan and familiarise
+					yourself with our goals and how we are going to meet them. We look forward to working together towards healthier happier lives.
+				</p>
+			</section>
+			<section class="space-y-5">
+				<!-- Fitness section -->
+				<div class="bg-[url('./fitness_1')] bg-cover bg-center w-fit h-fit rounded-md p-28">
+					<div class="bg-slate-400 bg-opacity-50 rounded-md p-10 backdrop-blur-md">
+						<div class="flex flex-col space-y-5">
+							<h2 class="text-2xl mx-auto text-white font-bold">Fitness</h2>
+							<p class="text-center text-white">
+								AGB is a company that's always on the lookout for new ways to make our employees healthier and happier. We thinks that exercise should be fun, and we want to make sure
+								that our staff have a way to enjoy it outside of their own homes. In order to do this, we have created a fitness program called "AGB-Active," which encourages employees
+								to get active in their workday by providing them with equipment for aerobics classes and yoga sessions every day.
+							</p>
+							<a
+								class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
+								href="/fitness_goals"
+							>
+								Goals
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Mental Health and Nutrition -->
+				<div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+					<!-- Nutrition -->
+					<div>
+						<div class="bg-[url('./nutrition_1')] bg-cover bg-center w-fit h-fit rounded-md p-28">
+							<div class="bg-slate-400 bg-opacity-50 rounded-md p-10 backdrop-blur-md">
+								<div class="flex flex-col space-y-5">
+									<h2 class="text-2xl mx-auto text-white font-bold">Nutrition</h2>
+									<p class="text-center text-white">
+										Nutrition is an important part of a healthy lifestyle. It's important that we make sure we're getting the right nutrients and vitamins in our diet, so we can
+										feel good and function at our best.
+									</p>
+									<a
+										class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
+										href="/nutrition_goals"
+									>
+										Goals
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--  Mental Health  -->
+					<div>
+						<div class="bg-[url('./mental_health_1')] bg-cover bg-center w-full h-full rounded-md flex py-10 lg:py-0">
+							<div class="bg-slate-400 bg-opacity-50 rounded-md p-10 mx-16 my-auto backdrop-blur-md">
+								<div class="flex flex-col space-y-5">
+									<h2 class="text-2xl mx-auto text-white font-bold">Mental Health</h2>
+									<p class="text-center text-white">
+										AGB has an Employee Wellness Program that includes monthly wellness check-ins, a corporate yoga studio, meditation classes, and access to a private counselor
+										who specializes in workplace issues. We also offer regular online workshops on topics ranging from stress management to mindfulness meditation, which can be
+										very helpful if you're looking for ways to improve your mental health at work as well as outside of it.
+									</p>
+									<a
+										class="w-fit items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mx-auto bg-[#04fbeb] hover:bg-[#29ddd4] text-white font-bold"
+										href="/mental_health_goals"
+									>
+										Goals
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
