@@ -30,6 +30,7 @@ router.get('/update-icon', controller.update_icon);
 router.get('/trash-icon', controller.trash);
 
 router.get('/manager_bg', controller.manager_bg);
+router.get('/boxing', controller.boxing);
 router.get('/managerAdd', controller.managerAdd);
 router.get('/managerRemove', controller.managerRemove);
 router.post('/addStaff', controller.addStaff);

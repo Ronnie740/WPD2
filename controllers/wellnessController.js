@@ -143,6 +143,9 @@ exports.trash = function (req, res) {
 exports.manager_bg = function (req, res) {
 	res.sendFile(path.join(public, './images/manager.jpg'));
 };
+exports.boxing = function (req, res) {
+	res.sendFile(path.join(public, './images/boxing.jpg'));
+};
 
 exports.login_bg = function (req, res) {
 	res.sendFile(path.join(public, './images/Mobile-login-Cristina.jpg'));
@@ -221,15 +224,15 @@ exports.update_Goal = function (req, res) {
 	// console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
 	// res.redirect('/fitness_goals');
 	if (req.body.category === 'fitness') {
-		fitness_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		fitness_goals.updateGoal(req.body.id, req.body.goal, req.body.start, req.body.end);
 		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
 		res.redirect('/fitness_goals');
 	} else if (req.body.category === 'nutrition') {
-		nutrition_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		nutrition_goals.updateGoal(req.body.id, req.body.goal, req.body.start, req.body.end);
 		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
 		res.redirect('/nutrition_goals');
 	} else {
-		mental_health_goals.updateGoal(req.body.goal, req.body.start, req.body.end);
+		mental_health_goals.updateGoal(req.body.id, req.body.goal, req.body.start, req.body.end);
 		console.log(`Your goal:${req.body.goal} will start on ${req.body.start} and end on ${req.body.end}.`);
 		res.redirect('/mental_health_goals');
 	}
@@ -280,7 +283,7 @@ exports.remove_Goal = function (req, res) {
 			res.redirect('/mental_health_goals');
 		} else {
 			console.log(`Goal No. ${req.body.id}`);
-			nutrition_goals.removeGoal(req.body.id);
+			mental_health_goals.removeGoal(req.body.id);
 			console.log(`The Goal has been removed from the database`);
 		}
 		res.redirect('/mental_health_goals');
