@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/wellnessController');
+const auth = require('../controllers/authController');
 
 //const bodyParser = require('body-parser');
 
@@ -15,7 +16,7 @@ router.get('/login', controller.login_page);
 // router.get('/guestbook', function (req, res) {
 // 	res.send('<h1>Guestbook Messages</h1>');
 // });
-router.get('/manager', controller.manager_page);
+router.get('/manager', auth.verify, controller.manager_page);
 
 //provide route to specific images and files used in the system
 router.get('/logo', controller.logo_img);
@@ -31,27 +32,27 @@ router.get('/trash-icon', controller.trash);
 
 router.get('/manager_bg', controller.manager_bg);
 router.get('/boxing', controller.boxing);
-router.get('/managerAdd', controller.managerAdd);
-router.get('/managerRemove', controller.managerRemove);
+router.get('/managerAdd', auth.verify, controller.managerAdd);
+router.get('/managerRemove', auth.verify, controller.managerRemove);
 router.post('/addStaff', controller.addStaff);
-router.get('/addGoal', controller.addGoal);
+router.get('/addGoal', auth.verify, controller.addGoal);
 router.post('/add_Goal', controller.add_Goal);
-router.get('/updateGoal', controller.updateGoal);
+router.get('/updateGoal', auth.verify, controller.updateGoal);
 router.post('/update_Goal', controller.update_Goal);
 router.post('/updateStaff', controller.updateStaff);
 router.post('/removeStaff', controller.removeStaff);
-router.get('/removeGoal', controller.removeGoal);
+// router.get('/removeGoal', auth.verify, controller.removeGoal);
+// router.post('/remove_Goal', controller.remove_Goal);
+router.get('/removeGoal', auth.verify, controller.removeGoal);
 router.post('/remove_Goal', controller.remove_Goal);
-router.get('/removeGoal', controller.removeGoal);
-router.post('/remove_Goal', controller.remove_Goal);
-router.get('/managerUpdate', controller.managerUpdate);
+router.get('/managerUpdate', auth.verify, controller.managerUpdate);
 router.get('/signup', controller.signUp_page);
 // router.get('/about', function (req, res) {
 // 	res.redirect('/about.html');
 // });
-router.get('/fitness_goals', controller.fitness_goals);
-router.get('/nutrition_goals', controller.nutrition_goals);
-router.get('/mental_health_goals', controller.mental_health_goals);
+router.get('/fitness_goals', auth.verify, controller.fitness_goals);
+router.get('/nutrition_goals', auth.verify, controller.nutrition_goals);
+router.get('/mental_health_goals', auth.verify, controller.mental_health_goals);
 router.get('/fitness', controller.fitness_page);
 router.get('/fitness_1', controller.fitness_1);
 router.get('/nutrition', controller.nutrition_page);
@@ -61,9 +62,12 @@ router.get('/mental_health', controller.mental_health);
 // router.get('/"Mental Health"', controller.mentalHealth_page);
 
 //process the routes for the new login
-router.post('/staff_signup', controller.staff_signup);
-router.post('/staff_login', controller.loginValidation);
-router.get('/wellness', controller.wellness);
+// router.post('/staff_signup', controller.staff_signup);
+router.post('/staff_signup', auth.post_new_user);
+
+// router.post('/staff_login', controller.loginValidation);
+router.post('/staff_login', auth.login, auth.loggedIn_landing);
+router.get('/wellness', auth.verify, controller.wellness);
 
 router.get('/about-bg', controller.about_bg);
 router.get('/fitness-bg', controller.fitness_bg);

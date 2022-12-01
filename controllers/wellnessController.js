@@ -2,11 +2,11 @@
 
 const staffDAO = require('../model/wellnessModel');
 const db = new staffDAO('staff.db');
-const goals = new staffDAO('goals.db');
+// const goals = new staffDAO('goals.db');
 const fitness_goals = new staffDAO('fitness.db');
 const nutrition_goals = new staffDAO('nutrition.db');
 const mental_health_goals = new staffDAO('mental_health.db');
-console.log('db created');
+// console.log('db created');
 //goals.initGoals();
 
 const express = require('express');
@@ -29,12 +29,14 @@ exports.landing_page = function (req, res) {
 };
 exports.login_page = function (req, res) {
 	//res.send('<h1>Landing page</h1>');
-	res.sendFile(path.join(public, '/login.html'));
+	// res.sendFile(path.join(public, '/login.html'));
+	res.render('user/login');
 	// res.sendFile('/Users/ronnie/Documents/Year 4 Courses/Web Platform Dev/Cw1/public/login.html');
 };
 exports.signUp_page = function (req, res) {
 	//res.send('<h1>Landing page</h1>');
-	res.sendFile(path.join(public, './signup.html'));
+	// res.sendFile(path.join(public, './signup.html'));
+	res.render('user/signup');
 };
 exports.manager_page = function (req, res) {
 	//res.send('<h1>Landing page</h1>');
