@@ -44,7 +44,7 @@ exports.login = function (req, res, next) {
 				//use the payload to store information about the user such as email.
 				let payload = { email: user.email };
 				//create the access token
-				let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 300 });
+				let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2h' });
 				res.cookie('jwt', accessToken);
 				next();
 			} else {

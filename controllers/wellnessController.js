@@ -148,6 +148,9 @@ exports.manager_bg = function (req, res) {
 exports.boxing = function (req, res) {
 	res.sendFile(path.join(public, './images/boxing.jpg'));
 };
+exports.mental_health2 = function (req, res) {
+	res.sendFile(path.join(public, './images/mental_health2.jpg'));
+};
 
 exports.login_bg = function (req, res) {
 	res.sendFile(path.join(public, './images/Mobile-login-Cristina.jpg'));

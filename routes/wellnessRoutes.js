@@ -32,6 +32,7 @@ router.get('/trash-icon', controller.trash);
 
 router.get('/manager_bg', controller.manager_bg);
 router.get('/boxing', controller.boxing);
+router.get('/mental_health2', controller.mental_health2);
 router.get('/managerAdd', auth.verify, controller.managerAdd);
 router.get('/managerRemove', auth.verify, controller.managerRemove);
 router.post('/addStaff', controller.addStaff);
