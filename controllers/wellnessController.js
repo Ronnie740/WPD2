@@ -165,6 +165,9 @@ exports.mental_health_1 = function (req, res) {
 exports.wellness = function (req, res) {
 	res.sendFile(path.join(public, './wellness.html'));
 };
+exports.logout = function (req, res) {
+	res.redirect('/');
+};
 
 exports.staff_signup = function (req, res) {
 	db.newStaff(req.body.fname, req.body.email, req.body.password, req.body.position);

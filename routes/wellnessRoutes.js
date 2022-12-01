@@ -68,6 +68,7 @@ router.post('/staff_signup', auth.post_new_user);
 // router.post('/staff_login', controller.loginValidation);
 router.post('/staff_login', auth.login, auth.loggedIn_landing);
 router.get('/wellness', auth.verify, controller.wellness);
+router.get('/logout', auth.logout, controller.logout);
 
 router.get('/about-bg', controller.about_bg);
 router.get('/fitness-bg', controller.fitness_bg);
