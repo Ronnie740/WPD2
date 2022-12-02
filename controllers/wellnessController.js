@@ -38,21 +38,21 @@ exports.signUp_page = function (req, res) {
 	// res.sendFile(path.join(public, './signup.html'));
 	res.render('user/signup');
 };
-exports.manager_page = function (req, res) {
-	//res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(public, './manager.html'));
-	db.getAllEntries()
-		.then((list) => {
-			res.render('manager', {
-				employees: list,
-			});
-			console.log('Promise Resolved');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-	// res.render('manager');
-};
+// exports.manager_page = function (req, res) {
+// 	//res.send('<h1>Landing page</h1>');
+// 	// res.sendFile(path.join(public, './manager.html'));
+// 	db.getAllEntries()
+// 		.then((list) => {
+// 			res.render('manager', {
+// 				employees: list,
+// 			});
+// 			console.log('Promise Resolved');
+// 		})
+// 		.catch((err) => {
+// 			console.log(err);
+// 		});
+// 	// res.render('manager');
+// };
 exports.fitness_goals = function (req, res) {
 	//res.sendFile(path.join(public, '/fitness_goals.html'));
 	// goals
@@ -161,6 +161,15 @@ exports.fitness_1 = function (req, res) {
 exports.nutrition_1 = function (req, res) {
 	res.sendFile(path.join(public, '/images/nutrition.jpg'));
 };
+exports.nutrition_2 = function (req, res) {
+	res.sendFile(path.join(public, '/images/nutrition2.jpg'));
+};
+exports.nutrition_3 = function (req, res) {
+	res.sendFile(path.join(public, '/images/nutrition3.jpg'));
+};
+exports.nutrition_bg = function (req, res) {
+	res.sendFile(path.join(public, '/images/nutritionBg.jpg'));
+};
 exports.mental_health_1 = function (req, res) {
 	res.sendFile(path.join(public, '/images/mentalHealth.jpg'));
 };
@@ -172,14 +181,18 @@ exports.logout = function (req, res) {
 	res.redirect('/');
 };
 
-exports.staff_signup = function (req, res) {
-	db.newStaff(req.body.fname, req.body.email, req.body.password, req.body.position);
-	res.redirect('/manager');
-};
-exports.loginValidation = function (req, res) {
-	db.loginValidation(req.body.email, req.body.password);
-	res.redirect('/manager');
-};
+//not being used in production
+//start
+// exports.staff_signup = function (req, res) {
+// 	db.newStaff(req.body.fname, req.body.email, req.body.password, req.body.position);
+// 	res.redirect('/manager');
+// };
+// exports.loginValidation = function (req, res) {
+// 	db.loginValidation(req.body.email, req.body.password);
+// 	res.redirect('/manager');
+// };
+//end
+
 exports.managerAdd = function (req, res) {
 	res.sendFile(path.join(public, '/addStaff.html'));
 };
@@ -200,12 +213,12 @@ exports.updateGoal = function (req, res) {
 	res.sendFile(path.join(public, './updateGoal.html'));
 };
 
-exports.addStaff = function (req, res) {
-	db.addStaff(req.body.fname, req.body.email, req.body.position);
-	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
-	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
-	res.redirect('/manager');
-};
+// exports.addStaff = function (req, res) {
+// 	db.addStaff(req.body.fname, req.body.email, req.body.position);
+// 	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
+// 	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
+// 	res.redirect('/manager');
+// };
 
 //add goals
 exports.add_Goal = function (req, res) {
@@ -298,27 +311,27 @@ exports.remove_Goal = function (req, res) {
 	}
 };
 
-exports.removeStaff = function (req, res) {
-	if (!req.body.id) {
-		res.send(`The employee doesn't exist`);
-	} else {
-		console.log(`Employee No. ${req.body.id}`);
-		db.removeStaff(req.body.id);
-		console.log(`The employee has been removed from the database`);
-	}
-	res.redirect('/manager');
-};
-exports.updateStaff = function (req, res) {
-	if (!req.body.id) {
-		res.send(`The employee doesn't exist`);
-	} else {
-		console.log(`Employee No. ${req.body.id}`);
-		db.updateStaff(req.body.id, req.body.name, req.body.position);
-		console.log(`The employee has been updated`);
-		//res.sendFile(path.join(views, './manager.mustache'.to_html()));
-	}
-	res.redirect('/manager');
-};
+// exports.removeStaff = function (req, res) {
+// 	if (!req.body.id) {
+// 		res.send(`The employee doesn't exist`);
+// 	} else {
+// 		console.log(`Employee No. ${req.body.id}`);
+// 		db.removeStaff(req.body.id);
+// 		console.log(`The employee has been removed from the database`);
+// 	}
+// 	res.redirect('/manager');
+// };
+// exports.updateStaff = function (req, res) {
+// 	if (!req.body.id) {
+// 		res.send(`The employee doesn't exist`);
+// 	} else {
+// 		console.log(`Employee No. ${req.body.id}`);
+// 		db.updateStaff(req.body.id, req.body.name, req.body.position);
+// 		console.log(`The employee has been updated`);
+// 		//res.sendFile(path.join(views, './manager.mustache'.to_html()));
+// 	}
+// 	res.redirect('/manager');
+// };
 
 exports.about = function (req, res) {
 	// res.send('<h1>Landing page</h1>');

@@ -3,7 +3,6 @@
 const bcrypt = require('bcrypt');
 const userDao = require('../model/userModel.js');
 const jwt = require('jsonwebtoken');
-
 const db = new userDao('users.db');
 exports.post_new_user = function (req, res) {
 	const user = req.body.fname;
@@ -29,7 +28,7 @@ exports.post_new_user = function (req, res) {
 exports.login = function (req, res, next) {
 	let email = req.body.email;
 	let password = req.body.password;
-	db.lookup(email, function (err, user) {
+	db.emailLookup(email, function (err, user) {
 		if (err) {
 			console.log('error looking up user', err);
 			return res.status(401).send();
@@ -73,4 +72,48 @@ exports.loggedIn_landing = function (req, res) {
 
 exports.logout = function (req, res) {
 	res.clearCookie('jwt').status(200).redirect('/');
+};
+
+exports.removeStaff = function (req, res) {
+	if (!req.body.id) {
+		res.send(`The employee doesn't exist`);
+	} else {
+		console.log(`Employee No. ${req.body.id}`);
+		db.removeStaff(req.body.id);
+		console.log(`The employee has been removed from the database`);
+	}
+	res.redirect('/manager');
+};
+exports.updateStaff = function (req, res) {
+	if (!req.body.id) {
+		res.send(`The employee doesn't exist`);
+	} else {
+		console.log(`Employee No. ${req.body.id}`);
+		db.updateStaff(req.body.id, req.body.name, req.body.position);
+		console.log(`The employee has been updated`);
+		//res.sendFile(path.join(views, './manager.mustache'.to_html()));
+	}
+	res.redirect('/manager');
+};
+//manager add staff
+exports.manager_add_user = function (req, res) {
+	db.addStaff(req.body.fname, req.body.email, req.body.position);
+	console.log(`Full Name: ${req.body.fname}, Email: ${req.body.email}, Job Title: ${req.body.position}`);
+	console.log(`You have just created a profile for: <br/> Full Name: ${req.body.fname},<br/>  Email: ${req.body.email},<br/>  Job Title: ${req.body.position}`);
+	res.redirect('/manager');
+};
+exports.manager_page = function (req, res) {
+	//res.send('<h1>Landing page</h1>');
+	// res.sendFile(path.join(public, './manager.html'));
+	db.getAllEntries()
+		.then((list) => {
+			res.render('manager', {
+				employees: list,
+			});
+			console.log('Promise Resolved');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+	// res.render('manager');
 };

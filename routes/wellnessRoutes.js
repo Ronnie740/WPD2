@@ -16,7 +16,7 @@ router.get('/login', controller.login_page);
 // router.get('/guestbook', function (req, res) {
 // 	res.send('<h1>Guestbook Messages</h1>');
 // });
-router.get('/manager', auth.verify, controller.manager_page);
+router.get('/manager', auth.verify, auth.manager_page);
 
 //provide route to specific images and files used in the system
 router.get('/logo', controller.logo_img);
@@ -35,13 +35,13 @@ router.get('/boxing', controller.boxing);
 router.get('/mental_health2', controller.mental_health2);
 router.get('/managerAdd', auth.verify, controller.managerAdd);
 router.get('/managerRemove', auth.verify, controller.managerRemove);
-router.post('/addStaff', controller.addStaff);
+router.post('/addStaff', auth.manager_add_user);
 router.get('/addGoal', auth.verify, controller.addGoal);
 router.post('/add_Goal', controller.add_Goal);
 router.get('/updateGoal', auth.verify, controller.updateGoal);
 router.post('/update_Goal', controller.update_Goal);
-router.post('/updateStaff', controller.updateStaff);
-router.post('/removeStaff', controller.removeStaff);
+router.post('/updateStaff', auth.updateStaff);
+router.post('/removeStaff', auth.removeStaff);
 // router.get('/removeGoal', auth.verify, controller.removeGoal);
 // router.post('/remove_Goal', controller.remove_Goal);
 router.get('/removeGoal', auth.verify, controller.removeGoal);
@@ -56,8 +56,11 @@ router.get('/nutrition_goals', auth.verify, controller.nutrition_goals);
 router.get('/mental_health_goals', auth.verify, controller.mental_health_goals);
 router.get('/fitness', controller.fitness_page);
 router.get('/fitness_1', controller.fitness_1);
-router.get('/nutrition', controller.nutrition_page);
+// router.get('/nutrition', controller.nutrition_page);
 router.get('/nutrition_1', controller.nutrition_1);
+router.get('/nutrition_2', controller.nutrition_2);
+router.get('/nutrition_3', controller.nutrition_3);
+router.get('/nutrition_bg', controller.nutrition_bg);
 router.get('/mental_health_1', controller.mental_health_1);
 router.get('/mental_health', controller.mental_health);
 // router.get('/"Mental Health"', controller.mentalHealth_page);
