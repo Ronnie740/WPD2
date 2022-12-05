@@ -15,14 +15,13 @@ const app = express();
 //import the path module and set it to the public folder
 //the reason for having the path here is that the load times of the static files is much faster as opposed
 //to having it in the index.js file and redirecting requests to that.
-const path = require('path');
-const e = require('express');
-const { features } = require('process');
-const public = path.join(__dirname, '../public/');
-app.use(express.static(public));
+// const path = require('path');
+// const public = path.join(__dirname, '../public/');
+// app.use(express.static(public));
 
 exports.landing_page = function (req, res) {
-	res.sendFile(path.join(public, '/index.html'));
+	// res.sendFile(path.join(public, '/index.html'));
+	res.redirect('/index.html');
 };
 exports.login_page = function (req, res) {
 	res.render('user/login');
@@ -75,30 +74,37 @@ exports.nutrition_goals = function (req, res) {
 };
 
 exports.wellness = function (req, res) {
-	res.sendFile(path.join(public, './wellness.html'));
+	// res.sendFile(path.join(public, './wellness.html'));
+	res.redirect('./wellness.html');
 };
 exports.logout = function (req, res) {
 	res.redirect('/');
 };
 
 exports.managerAdd = function (req, res) {
-	res.sendFile(path.join(public, '/addStaff.html'));
+	// res.sendFile(path.join(public, '/addStaff.html'));
+	res.redirect('/addStaff.html');
 };
 exports.managerRemove = function (req, res) {
-	res.sendFile(path.join(public, '/removeStaff.html'));
+	// res.sendFile(path.join(public, '/removeStaff.html'));
+	res.redirect('/removeStaff.html');
 };
 exports.managerUpdate = function (req, res) {
-	res.sendFile(path.join(public, './updateStaff.html'));
+	res.redirect('./updateStaff.html');
+	// res.sendFile(path.join(public, './updateStaff.html'));
 };
 
 exports.addGoal = function (req, res) {
-	res.sendFile(path.join(public, './addGoal.html'));
+	res.redirect('./addGoal.html');
+	// res.sendFile(path.join(public, './addGoal.html'));
 };
 exports.removeGoal = function (req, res) {
-	res.sendFile(path.join(public, './removeGoal.html'));
+	res.redirect('./removeGoal.html');
+	// res.sendFile(path.join(public, './removeGoal.html'));
 };
 exports.updateGoal = function (req, res) {
-	res.sendFile(path.join(public, './updateGoal.html'));
+	res.redirect('./updateGoal.html');
+	// res.sendFile(path.join(public, './updateGoal.html'));
 };
 
 // exports.addStaff = function (req, res) {
