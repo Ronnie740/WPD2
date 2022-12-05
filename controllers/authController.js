@@ -103,8 +103,6 @@ exports.manager_add_user = function (req, res) {
 	res.redirect('/manager');
 };
 exports.manager_page = function (req, res) {
-	//res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(public, './manager.html'));
 	db.getAllEntries()
 		.then((list) => {
 			res.render('manager', {
@@ -115,5 +113,4 @@ exports.manager_page = function (req, res) {
 		.catch((err) => {
 			console.log(err);
 		});
-	// res.render('manager');
 };
