@@ -6,7 +6,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Manager View</title>
+		<title>Fitness Goals</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<!-- List code Start -->
 		<style>
@@ -137,7 +137,7 @@
 		<header class="text-gray-600 body-font">
 			<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
 				<a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-					<img src="/logo" alt="AGB_logo" class="w-20 h-15" />
+					<img src="./images/logo.png" alt="AGB_logo" class="w-20 h-15" />
 				</a>
 				<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center font-bold">
 					<a class="mr-5 hover:text-gray-900 hover:border-b-2 hover:border-black cursor-pointer p-2" href="/">About Us</a>
@@ -162,7 +162,7 @@
 					yourself with our goals and how we are going to meet them. We look forward to working together towards healthier happier lives.
 				</p>
 			</section>
-			<section class="bg-[url('/fitness-bg')] bg-cover bg-center min-h-fit h-full w-full space-y-10 mt-10">
+			<section class="bg-[url('./images/mental_healthBg.jpg')] bg-cover bg-center min-h-fit h-full w-full space-y-10 mt-10">
 				<section class="text-gray-600 body-font w-full h-[100vh] space-y-10">
 					<!-- goals section -->
 					<section class="space-y-5">
@@ -191,22 +191,22 @@
 									<p>{{_id}}</p>
 								</div>
 								<!-- Completed -->
-								<div class="my-auto w-1/4 mx-auto"><img src="/checked" alt="check-mark" class="w-10 h-10" /></div>
+								<div class="my-auto w-1/4 mx-auto"><img src="./images/check-mark.png" alt="check-mark" class="w-10 h-10" /></div>
 							</div>
                             {{/goals}}
 							<!-- Buttons -->
 							<div class="flex">
 								<div class="mx-auto space-x-5">
 									<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/addGoal">
-											<img src="./add-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											<img src="/images/add.png" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
 											Add
 										</a>
 										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/removeGoal">
-											<img src="./trash-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											<img src="/images/trash.png" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
 											Remove
 										</a>
 										<a class="py-1 px-2 bg-[#04fbeb] hover:bg-[#29ddd4] rounded-md inline-flex cursor-pointer" href="/updateGoal">
-											<img src="./update-icon" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
+											<img src="./images/refresh.png" alt="add_icon" class="w-5 h-5 mr-2 my-auto" />
 											Update
 										</a>
 								</div>
@@ -217,16 +217,16 @@
 					<!-- Highlights -->
 					<section>
 						<div class="md:grid md:grid-cols-2 grid grid-cols-1 gap-4 bg-black rounded-md bg-opacity-30 p-5 backdrop-blur-lg h-full">
-							<div class="cols-span-1 p-2 w-full bg-[url('/boxing')] bg-cover bg-center bg-no-repeat rounded-md h-52 w-full border border-white"></div>
+							<div class="cols-span-1 p-2 w-full bg-[url('./images/boxing.jpg')] bg-cover bg-center bg-no-repeat rounded-md h-52 w-full border border-white"></div>
 							<div class="cols-span-1 p-2 w-full text-white"> <h2 class="text-2xl font-bold text-center">Shadow Boxing</h2> <p> We have created a program called "Fight Club" where employees who want to participate can do so. The program includes a variety of activities, the most important being shadow boxing which will be conducted via zoom and the instructor will be a professional boxer.</p></div>
 						</div>
 					</section>
 					<section>
 						<div class="md:grid md:grid-cols-2 grid grid-cols-1 gap-4 bg-black rounded-md bg-opacity-30 p-5 backdrop-blur-lg h-full">
-							<div class="md:hidden cols-span-1 p-2 w-full bg-[url('/mental_health2')] bg-cover bg-[center_top_25%] bg-no-repeat rounded-md h-52 w-full border border-white"></div>
+							<div class="md:hidden cols-span-1 p-2 w-full bg-[url('./images/mental_health2.jpg')] bg-cover bg-[center_top_25%] bg-no-repeat rounded-md h-52 w-full border border-white"></div>
 							<div class="cols-span-1 p-2 w-full text-white"> <h2 class="text-2xl font-bold text-center">Aerobics</h2> <p> At Agb, we believe that aerobics is an important part of a healthy lifestyle. We've been incorporating it into our employees' lives for years, and now it's time to show them how much they can benefit from it.
 We'll be holding a series of classes for all employees at the gym.</p></div>
-							<div class="hidden md:block cols-span-1 p-2 w-full bg-[url('/mental_health2')] bg-cover bg-[center_top_25%] bg-no-repeat rounded-md h-52 w-full border border-white"></div>
+							<div class="hidden md:block cols-span-1 p-2 w-full bg-[url('./images/mental_health2.jpg')] bg-cover bg-[center_top_25%] bg-no-repeat rounded-md h-52 w-full border border-white"></div>
 						</div>
 					</section>
 					<div class="flex">

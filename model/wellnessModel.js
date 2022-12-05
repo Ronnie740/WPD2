@@ -4,7 +4,7 @@ const { response } = require('express');
 const nedb = require('nedb');
 const { isAbsolute } = require('path');
 
-class Staff {
+class Wellness {
 	constructor(dbFilePath) {
 		if (dbFilePath) {
 			this.db = new nedb({ filename: dbFilePath, autoload: true });
@@ -155,4 +155,4 @@ class Staff {
 	// 	});
 	// }
 }
-module.exports = Staff;
+module.exports = Wellness;

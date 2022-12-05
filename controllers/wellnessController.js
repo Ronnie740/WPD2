@@ -1,11 +1,11 @@
 /** @format */
 
-const staffDAO = require('../model/wellnessModel');
-const db = new staffDAO('staff.db');
-// const goals = new staffDAO('goals.db');
-const fitness_goals = new staffDAO('fitness.db');
-const nutrition_goals = new staffDAO('nutrition.db');
-const mental_health_goals = new staffDAO('mental_health.db');
+const wellnessDAO = require('../model/wellnessModel');
+// const db = new wellnessDAO('staff.db');
+// const goals = new wellnessDAO('goals.db');
+const fitness_goals = new wellnessDAO('fitness.db');
+const nutrition_goals = new wellnessDAO('nutrition.db');
+const mental_health_goals = new wellnessDAO('mental_health.db');
 // console.log('db created');
 //goals.initGoals();
 
@@ -19,53 +19,18 @@ const path = require('path');
 const e = require('express');
 const { features } = require('process');
 const public = path.join(__dirname, '../public/');
-const views = path.join(__dirname, '../views/');
 app.use(express.static(public));
-// app.use(express.urlencoded({ extended: false }));
 
 exports.landing_page = function (req, res) {
-	// res.send('<h1>Landing page</h1>');
 	res.sendFile(path.join(public, '/index.html'));
 };
 exports.login_page = function (req, res) {
-	//res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(public, '/login.html'));
 	res.render('user/login');
-	// res.sendFile('/Users/ronnie/Documents/Year 4 Courses/Web Platform Dev/Cw1/public/login.html');
 };
 exports.signUp_page = function (req, res) {
-	//res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(public, './signup.html'));
 	res.render('user/signup');
 };
-// exports.manager_page = function (req, res) {
-// 	//res.send('<h1>Landing page</h1>');
-// 	// res.sendFile(path.join(public, './manager.html'));
-// 	db.getAllEntries()
-// 		.then((list) => {
-// 			res.render('manager', {
-// 				employees: list,
-// 			});
-// 			console.log('Promise Resolved');
-// 		})
-// 		.catch((err) => {
-// 			console.log(err);
-// 		});
-// 	// res.render('manager');
-// };
 exports.fitness_goals = function (req, res) {
-	//res.sendFile(path.join(public, '/fitness_goals.html'));
-	// goals
-	// 	.getAllEntries()
-	// 	.then((list) => {
-	// 		res.render('fitness', {
-	// 			goals: list,
-	// 		});
-	// 		console.log('Promise Resolved');
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err);
-	// 	});
 	fitness_goals
 		.getAllEntries()
 		.then((list) => {
@@ -108,71 +73,6 @@ exports.nutrition_goals = function (req, res) {
 			console.log(err);
 		});
 };
-exports.fitness_page = function (req, res) {
-	res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(__dirname, './public/index.html'));
-};
-exports.nutrition_page = function (req, res) {
-	res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(__dirname, './public/index.html'));
-};
-exports.mental_health = function (req, res) {
-	res.send('<h1>Landing page</h1>');
-	// res.sendFile(path.join(__dirname, './public/index.html'));
-};
-exports.logo_img = function (req, res) {
-	res.sendFile(path.join(public, './images/logo.png'));
-};
-exports.update_icon = function (req, res) {
-	res.sendFile(path.join(public, './images/refresh.png'));
-};
-
-exports.about_bg = function (req, res) {
-	res.sendFile(path.join(public, './images/8225.jpg'));
-};
-exports.fitness_bg = function (req, res) {
-	res.sendFile(path.join(public, './images/mental_healthBg.jpg'));
-};
-exports.checked = function (req, res) {
-	res.sendFile(path.join(public, './images/check-mark.png'));
-};
-exports.add_icon = function (req, res) {
-	res.sendFile(path.join(public, './images/add.png'));
-};
-exports.trash = function (req, res) {
-	res.sendFile(path.join(public, './images/trash.png'));
-};
-exports.manager_bg = function (req, res) {
-	res.sendFile(path.join(public, './images/manager.jpg'));
-};
-exports.boxing = function (req, res) {
-	res.sendFile(path.join(public, './images/boxing.jpg'));
-};
-exports.mental_health2 = function (req, res) {
-	res.sendFile(path.join(public, './images/mental_health2.jpg'));
-};
-
-exports.login_bg = function (req, res) {
-	res.sendFile(path.join(public, './images/Mobile-login-Cristina.jpg'));
-};
-exports.fitness_1 = function (req, res) {
-	res.sendFile(path.join(public, '/images/fitness.jpg'));
-};
-exports.nutrition_1 = function (req, res) {
-	res.sendFile(path.join(public, '/images/nutrition.jpg'));
-};
-exports.nutrition_2 = function (req, res) {
-	res.sendFile(path.join(public, '/images/nutrition2.jpg'));
-};
-exports.nutrition_3 = function (req, res) {
-	res.sendFile(path.join(public, '/images/nutrition3.jpg'));
-};
-exports.nutrition_bg = function (req, res) {
-	res.sendFile(path.join(public, '/images/nutritionBg.jpg'));
-};
-exports.mental_health_1 = function (req, res) {
-	res.sendFile(path.join(public, '/images/mentalHealth.jpg'));
-};
 
 exports.wellness = function (req, res) {
 	res.sendFile(path.join(public, './wellness.html'));
@@ -180,18 +80,6 @@ exports.wellness = function (req, res) {
 exports.logout = function (req, res) {
 	res.redirect('/');
 };
-
-//not being used in production
-//start
-// exports.staff_signup = function (req, res) {
-// 	db.newStaff(req.body.fname, req.body.email, req.body.password, req.body.position);
-// 	res.redirect('/manager');
-// };
-// exports.loginValidation = function (req, res) {
-// 	db.loginValidation(req.body.email, req.body.password);
-// 	res.redirect('/manager');
-// };
-//end
 
 exports.managerAdd = function (req, res) {
 	res.sendFile(path.join(public, '/addStaff.html'));
@@ -335,7 +223,7 @@ exports.remove_Goal = function (req, res) {
 
 exports.about = function (req, res) {
 	// res.send('<h1>Landing page</h1>');
-	res.sendFile(path.join(public, '/userAboutUs.html'));
+	res.sendFile(path.join(public, '/aboutUs.html'));
 };
 
 // exports.about_page = function (req, res) {
