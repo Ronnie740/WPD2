@@ -6,7 +6,6 @@ require('dotenv').config();
 const router = require('./routes/wellnessRoutes');
 const cookieParser = require('cookie-parser');
 const mustache = require('mustache-express');
-const serverless = require('serverless-http');
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
@@ -18,7 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/', router);
 
-// app.listen(3000, () => {
-// 	console.log('Server started on port 3000. Ctrl^c to quit.');
-// });
-module.exports.handler = serverless(app);
+app.listen(3000, () => {
+	console.log('Server started on port 3000. Ctrl^c to quit.');
+});
