@@ -229,7 +229,7 @@ exports.remove_Goal = function (req, res) {
 
 exports.about = function (req, res) {
 	// res.send('<h1>Landing page</h1>');
-	res.sendFile(path.join(public, '/aboutUs.html'));
+	res.redirect('/aboutUs.html');
 };
 
 // exports.about_page = function (req, res) {
