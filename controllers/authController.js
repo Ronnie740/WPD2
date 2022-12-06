@@ -20,7 +20,7 @@ exports.post_new_user = function (req, res) {
 			return;
 		}
 		db.create(user, email, password, position);
-		console.log('register user', user, 'password', password, 'email', email, 'position', position);
+		console.log('register user', user, 'email', email, 'position', position);
 		res.redirect('/login');
 	});
 };
